@@ -1,0 +1,20 @@
+[api-updater (non-obsolete-error-filter)] 2022-08-27 PM 9:35:01 : Starting C:/Users/zheng/Desktop/새 폴더/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 226.7603ms
+moved types parse time: 67ms
+candidates parse time : 13ms
+C# parse time         : 267ms
+candidates check time : 34ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2022-08-27 PM 9:52:03 : Starting C:/Users/zheng/Desktop/새 폴더/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 126.1148ms
+moved types parse time: 64ms
+candidates parse time : 3ms
+C# parse time         : 212ms
+candidates check time : 30ms
+console write time    : 0ms
+

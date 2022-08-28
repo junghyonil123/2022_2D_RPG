@@ -8,10 +8,13 @@ public class Monster : MonoBehaviour
     Rigidbody2D monsterRigidbody;
     public Animator attackEffectAnimator;
     public GameObject hitEffect;
+    public float maxHp;
+    public float currentHp;
 
     private void Start()
     {
         monsterRigidbody = GetComponent<Rigidbody2D>();
+        currentHp = maxHp;
     }
 
     public void hit()
@@ -19,6 +22,8 @@ public class Monster : MonoBehaviour
         hitEffect.SetActive(true);
         attackEffectAnimator.SetTrigger("IsAttacked");
         StartCoroutine(knockback());
+
+        currentHp -= Player.Instance.at;
     }
 
     IEnumerator knockback()

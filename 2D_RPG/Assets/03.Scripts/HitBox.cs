@@ -14,4 +14,5 @@ public class HitBox : MonoBehaviour
             collision.GetComponent<Monster>().hit();
         }
     }
+
 }

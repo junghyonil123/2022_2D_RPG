@@ -30,7 +30,17 @@ public class Monster : MonoBehaviour
     {
         for (int i = 0; i < 30; i++)
         {
-            monsterRigidbody.AddForce(new Vector2(5f, 0f));
+            if(Player.Instance.transform.position.x < transform.position.x)
+            {
+                //플레이어가 왼쪽에있음 몬스터는 오른쪽으로 밀림
+                monsterRigidbody.AddForce(new Vector2(5f, 0f));
+            }
+            else
+            {
+                //플레이어가 오른쪽에있음 몬스터는 왼쪽으로 밀림
+                monsterRigidbody.AddForce(new Vector2(-5f, 0f));
+            }
+            
             yield return null;
         }
     }

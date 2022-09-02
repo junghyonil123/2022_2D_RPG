@@ -195,6 +195,13 @@ public class Player : MonoBehaviour
             playerAnimator.SetBool("IsGround", true);
         
         }
+
+        if (collision.gameObject.tag == "Item")
+        {
+            Inventory.Instance.GetItem(collision.gameObject.GetComponent<Item>());
+            Destroy(collision.gameObject);
+        }
     }
+
 
 }

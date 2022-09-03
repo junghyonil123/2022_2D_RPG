@@ -21,7 +21,14 @@ public class Player : MonoBehaviour
     public float at;
     public float def;
 
-    public int Level;
+    public int playerStr = 5;
+    public int playerInt = 5;
+    public int playerAgl = 5;
+    public int playerCon = 5;
+
+    public int statPoint = 0;
+
+    public int Level = 1;
     public float maxExp;
     public float currentExp;
 

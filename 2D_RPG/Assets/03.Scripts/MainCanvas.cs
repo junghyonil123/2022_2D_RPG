@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainCanvas : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MainCanvas : MonoBehaviour
     public GameObject playerHpBar;
     public GameObject playerMpBar;
     public GameObject playerExpBar;
+    public GameObject playerLevelText;
 
     void Start()
     {
@@ -62,6 +64,9 @@ public class MainCanvas : MonoBehaviour
 
         //플레이어의 경험치바 관리
         float playerLevelPer = Player.Instance.currentExp / Player.Instance.maxExp;
-        playerExpBar.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(865 * playerLevelPer, 20);
+        playerExpBar.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(700 * playerLevelPer, 20);
+
+        //플레이어의 레벨을 표시
+        playerLevelText.GetComponent<Text>().text = "Lv. " + Player.Instance.Level;
     }
 }

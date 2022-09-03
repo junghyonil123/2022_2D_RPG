@@ -5,12 +5,12 @@ using UnityEngine;
 public class MainCanvas : MonoBehaviour
 {
     public GameObject hpBar;
-
-    [SerializeField]
     GameObject[] monsterArray;
-
-    [SerializeField]
     List<GameObject> hpBarList = new List<GameObject>();
+
+    public GameObject playerHpBar;
+    public GameObject playerMpBar;
+    public GameObject playerExpBar;
 
     void Start()
     {
@@ -31,6 +31,7 @@ public class MainCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //몬스터의 체력바 관리
         for (int i = 0; i < monsterArray.Length; i++)
         {
             if(monsterArray[i] != null)
@@ -50,5 +51,17 @@ public class MainCanvas : MonoBehaviour
                 }
             }
         }
+
+        //플레이어의 체력바 관리
+        float playerHpPer = Player.Instance.currentHp / Player.Instance.maxHp;
+        playerHpBar.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(700 * playerHpPer, 50);
+
+        //플레이어의 마나바 관리
+        float playerMpPer = Player.Instance.currentMp / Player.Instance.maxMp;
+        playerMpBar.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(700 * playerMpPer, 50);
+
+        //플레이어의 경험치바 관리
+        float playerLevelPer = Player.Instance.currentExp / Player.Instance.maxExp;
+        playerExpBar.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(865 * playerLevelPer, 20);
     }
 }

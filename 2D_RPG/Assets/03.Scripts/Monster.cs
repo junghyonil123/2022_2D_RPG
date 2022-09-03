@@ -11,6 +11,9 @@ public class Monster : MonoBehaviour
     public float maxHp;
     public float currentHp;
 
+    public float at;
+    public float def;
+
     private void Start()
     {
         monsterRigidbody = GetComponent<Rigidbody2D>();
@@ -23,7 +26,15 @@ public class Monster : MonoBehaviour
         attackEffectAnimator.SetTrigger("IsAttacked");
         StartCoroutine(knockback());
 
-        currentHp -= Player.Instance.at;
+        if(Player.Instance.at - def < 1)
+        {
+            currentHp -= 1; //데미지가 1보다 적다면 1을깍는다
+        }
+        else
+        {
+            currentHp -= (Player.Instance.at - def); //체력을 깍는다
+        }
+        
     }
 
     IEnumerator knockback()
@@ -45,4 +56,20 @@ public class Monster : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            //플레이어를 공격함
+            if (at - Player.Instance.def < 1)
+            {
+                Player.Instance.currentHp -= 1;
+            }
+            else
+            {
+                Player.Instance.currentHp -= (at - Player.Instance.def);
+            }
+
+        }
+    }
 }

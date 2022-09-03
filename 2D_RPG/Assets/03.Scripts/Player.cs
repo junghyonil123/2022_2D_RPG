@@ -14,7 +14,18 @@ public class Player : MonoBehaviour
     public float JumpPower;
     public Vector2 hitBoxSize;
 
+    public float maxHp;
+    public float currentHp;
+    public float maxMp;
+    public float currentMp;
     public float at;
+    public float def;
+
+    public int Level;
+    public float maxExp;
+    public float currentExp;
+
+    bool isDeath = false;
 
     #region Singleton
     private static Player instance;
@@ -63,17 +74,34 @@ public class Player : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerAudioSource = GetComponent<AudioSource>();
+
+        currentExp = 0;
+        currentHp = maxHp;
+        currentMp = maxMp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        CheckDirection();
-        Jump();
-        Attack();
+        if (!isDeath)
+        {
+            Move();
+            CheckDirection();
+            Jump();
+            Attack();
+            Die();
+        }
     }
 
+    public void Die()
+    {
+        if(currentHp <= 0)
+        {
+            playerAnimator.SetTrigger("IsDead");
+            GameObject.Find("WalkSound").GetComponent<AudioSource>().Stop();
+            isDeath = true;
+        }
+    }
 
     Vector2 jumpVector;
     public bool isCanJump = true;

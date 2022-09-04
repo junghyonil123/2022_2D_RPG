@@ -10,9 +10,13 @@ public class MainCanvas : MonoBehaviour
     List<GameObject> hpBarList = new List<GameObject>();
 
     public GameObject playerHpBar;
+    public Text playerHpBarValueText;
     public GameObject playerMpBar;
     public GameObject playerExpBar;
     public GameObject playerLevelText;
+    public GameObject playerGoldText;
+
+   
 
     void Start()
     {
@@ -46,6 +50,7 @@ public class MainCanvas : MonoBehaviour
 
                 if (monsterArray[i].GetComponent<Monster>().currentHp <= 0)
                 {
+                    monsterArray[i].GetComponent<Monster>().Die(); //몬스터가 아이템을 드롭한다.
                     Destroy(monsterArray[i]);
                     Destroy(hpBarList[i]);
                     monsterArray[i] = null;
@@ -56,6 +61,7 @@ public class MainCanvas : MonoBehaviour
 
         //플레이어의 체력바 관리
         float playerHpPer = Player.Instance.currentHp / Player.Instance.maxHp;
+        playerHpBarValueText.text = Player.Instance.currentHp + " / " + Player.Instance.maxHp;
         playerHpBar.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(700 * playerHpPer, 50);
 
         //플레이어의 마나바 관리
@@ -68,5 +74,8 @@ public class MainCanvas : MonoBehaviour
 
         //플레이어의 레벨을 표시
         playerLevelText.GetComponent<Text>().text = "Lv. " + Player.Instance.Level;
+
+        //플레이어의 골드를 표시
+        playerGoldText.GetComponent<Text>().text = Player.Instance.gold + " G";
     }
 }

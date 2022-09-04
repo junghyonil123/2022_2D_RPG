@@ -14,10 +14,34 @@ public class Monster : MonoBehaviour
     public float at;
     public float def;
 
+    public int dropExp;
+    public int dropGold;
+    public List<Item> dropItem = new List<Item>();
+    public List<int> dropPercentage = new List<int>();
+
     private void Start()
     {
         monsterRigidbody = GetComponent<Rigidbody2D>();
         currentHp = maxHp;
+    }
+
+    public void Die()
+    {
+        if(currentHp <= 0)
+        {
+            Player.Instance.GetGold(dropGold);
+            Player.Instance.GetExp(dropExp);
+
+
+
+            Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        FindPlayer();
+        Die();
     }
 
     public void hit()
@@ -54,6 +78,11 @@ public class Monster : MonoBehaviour
             
             yield return null;
         }
+    }
+
+    public void FindPlayer()
+    {
+        transform.position = Vector2.Lerp(transform.position, Player.Instance.transform.position, 0.001f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

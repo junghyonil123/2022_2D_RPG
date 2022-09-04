@@ -9,15 +9,25 @@ public class StatusWindow : MonoBehaviour
     public Text intText;
     public Text aglText;
     public Text conText;
+    public Text statPointText;
 
-    public Text statPoint;
+    public Text atText;
+    public Text defText;
+    public Text hpText;
+
+    
+    public Text levelText;
+
+
+
 
     public GameObject statusPanel;
 
+    private bool isInvnetoryOpen = false;
     public void OnOffPanel()
     {
-        Debug.Log("드러와써욤");
-        statusPanel.SetActive(true);
+        isInvnetoryOpen = !isInvnetoryOpen;
+        statusPanel.SetActive(isInvnetoryOpen);
         SetStatusWindow();
     }
 
@@ -62,10 +72,17 @@ public class StatusWindow : MonoBehaviour
 
     public void SetStatusWindow()
     {
+
         strText.text = "Str  " + Player.Instance.playerStr;
         intText.text = "Int  " + Player.Instance.playerInt;
         aglText.text = "Agl  " + Player.Instance.playerAgl;
         conText.text = "Con  " + Player.Instance.playerCon;
-        statPoint.text = "잔여포인트 " + Player.Instance.statPoint;
+        statPointText.text = "잔여포인트 " + Player.Instance.statPoint;
+        levelText.text = "Lv. " + Player.Instance.Level;
+
+
+        atText.text = "공격력  " + Player.Instance.at;
+        defText.text = "방어력  " + Player.Instance.def;
+        hpText.text = "체력  " + Player.Instance.maxHp;
     }
 }

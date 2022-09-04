@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public float maxExp;
     public float currentExp;
 
+    public int gold;
+
     bool isDeath = false;
 
     #region Singleton
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerAudioSource = GetComponent<AudioSource>();
 
+        SetStatus();
         currentExp = 0;
         currentHp = maxHp;
         currentMp = maxMp;
@@ -97,6 +100,34 @@ public class Player : MonoBehaviour
             Jump();
             Attack();
             Die();
+            SetStatus();
+        }
+    }
+
+    public void SetStatus()
+    {
+        at = playerStr * 2;
+        def = playerCon * 1;
+        maxHp = playerCon * 10;
+    }
+
+
+    public void GetGold(int _gold)
+    {
+        gold += _gold;
+    }
+
+    public void GetExp(int _Exp)
+    {
+        currentExp += _Exp;
+
+        if(currentExp >= maxExp)
+        {
+            currentExp = currentExp - maxExp;
+            Level += 1; 
+            maxExp = Level * 5;
+            statPoint += 5;
+            currentHp = maxHp;
         }
     }
 

@@ -150,7 +150,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && isCanJump) //계속 점프가 가능한것을 막음
         {
-            Debug.Log("들어왓어용");
 
             isCanJump = false;
 

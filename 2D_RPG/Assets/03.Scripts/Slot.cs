@@ -7,14 +7,13 @@ public class Slot : MonoBehaviour
 {
     [SerializeField]
     private Image itemImage = null;
-
     public Item item = null;
  
     
     public void SetItem(Item _item)
     {
         //아이템을 슬롯에 추가해주는함수
-        item = _item;
+        item = Instantiate(_item, transform);
         itemImage.gameObject.SetActive(true);
         itemImage.sprite = _item.sprite;
     }

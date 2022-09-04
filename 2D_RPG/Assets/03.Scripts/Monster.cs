@@ -16,9 +16,10 @@ public class Monster : MonoBehaviour
 
     public int dropExp;
     public int dropGold;
-    public List<Item> dropItem = new List<Item>();
-    public List<int> dropPercentage = new List<int>();
 
+    public List<GameObject> dropItemList = new List<GameObject>();
+    public List<int> dropDropPercentageList = new List<int>();
+    
     private void Start()
     {
         monsterRigidbody = GetComponent<Rigidbody2D>();
@@ -32,7 +33,15 @@ public class Monster : MonoBehaviour
             Player.Instance.GetGold(dropGold);
             Player.Instance.GetExp(dropExp);
 
-
+            for (int i = 0; i < dropItemList.Count; i++)
+            {
+                if (dropDropPercentageList[i] >= Random.Range(1, 101))
+                {
+                    Debug.Log("아이템생성");
+                    GameObject dropedItem = Instantiate(dropItemList[i], this.transform.position, Quaternion.identity);
+                    dropedItem.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 15);
+                }
+            }
 
             Destroy(gameObject);
         }

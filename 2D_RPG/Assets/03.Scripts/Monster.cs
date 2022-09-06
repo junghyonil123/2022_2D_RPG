@@ -50,7 +50,6 @@ public class Monster : MonoBehaviour
     private void Update()
     {
         FindPlayer();
-        Die();
     }
 
     public void hit()

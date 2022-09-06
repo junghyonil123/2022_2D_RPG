@@ -73,6 +73,7 @@ public class StatusWindow : MonoBehaviour
     public void SetStatusWindow()
     {
 
+        Player.Instance.SetStatus();
         strText.text = "Str  " + Player.Instance.playerStr;
         intText.text = "Int  " + Player.Instance.playerInt;
         aglText.text = "Agl  " + Player.Instance.playerAgl;

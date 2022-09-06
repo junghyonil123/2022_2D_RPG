@@ -15,6 +15,6 @@ public class Slot : MonoBehaviour
         //아이템을 슬롯에 추가해주는함수
         item = Instantiate(_item, transform);
         itemImage.gameObject.SetActive(true);
-        itemImage.sprite = _item.sprite;
+        itemImage.sprite = _item.ItemSprite;
     }
 }

@@ -2,8 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    Weapon,
+    Head,
+    Glove,
+    Armo,
+    ConsumableItme,
+    Material
+}
+
 public class Item : MonoBehaviour
 {
-    public string name;
-    public Sprite sprite;
+    public string ItmeName;
+    public Sprite ItemSprite;
+    public ItemType itmeType;
+
+    public int itemAt;
+    public string explanation;
 }

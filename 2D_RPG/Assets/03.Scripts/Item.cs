@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ItemType
 {
@@ -19,5 +20,10 @@ public class Item : MonoBehaviour
     public ItemType itmeType;
 
     public int itemAt;
-    public string explanation;
+    public string itmeExplanation;
+
+    private void Awake()
+    {
+        ItemSprite = GetComponent<SpriteRenderer>().sprite;
+    }
 }

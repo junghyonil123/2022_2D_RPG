@@ -17,4 +17,10 @@ public class Slot : MonoBehaviour
         itemImage.gameObject.SetActive(true);
         itemImage.sprite = _item.ItemSprite;
     }
+
+    public void OnClick()
+    {
+        CanvasManager.Instance.OnExplanationWindow();
+        ExplanationWindow.Instance.SetExplanation(item);
+    }
 }

@@ -34,16 +34,16 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        //생성과 동시에 실행되는 Awake는 이미 생성되어있는 싱글톤 오브젝트가 있는지 검사하고 있다면 지금 생성된 오브젝트를 파괴
+        ////생성과 동시에 실행되는 Awake는 이미 생성되어있는 싱글톤 오브젝트가 있는지 검사하고 있다면 지금 생성된 오브젝트를 파괴
 
-        var objs = FindObjectsOfType<Player>();
-        if (objs.Length != 1)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        //var objs = FindObjectsOfType<Player>();
+        //if (objs.Length != 1)
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
 
-        DontDestroyOnLoad(gameObject); //씬을 전환할때 파괴되는것을 막음
+        //DontDestroyOnLoad(gameObject); //씬을 전환할때 파괴되는것을 막음
     }
     #endregion
 
